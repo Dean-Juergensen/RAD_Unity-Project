@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929de533212ecc14ca4bf5412910c7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeTemplate: {fileID: 0}
 --- !u!54 &9124339489103092521
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -227,8 +228,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
+  m_Constraints: 112
+  m_CollisionDetection: 2
 --- !u!65 &9124339489103092520
 BoxCollider:
   m_ObjectHideFlags: 0

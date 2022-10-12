@@ -24,10 +24,10 @@ public class PlayerControl : MonoBehaviour
             transform.position -= transform.up * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.W))
-            transform.position += transform.forward * Time.deltaTime;
+            transform.position += 5*transform.forward * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.S))
-            transform.position -= transform.forward * Time.deltaTime;
+            transform.position -= 5*transform.forward * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.E))
             transform.position += transform.right * Time.deltaTime;
