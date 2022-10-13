@@ -15,10 +15,7 @@ public class ApplyForces : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            ourRigidBody.AddExplosionForce(1000, transform.position +Vector3.down, 2);
-        }
+
 
     }
 
