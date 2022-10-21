@@ -7,7 +7,8 @@ public class PlayerControl : MonoBehaviour
     private float turningSpeed = 180;
     Rigidbody ourRigidBody;
     public Transform SnowballTemplate;
-    private float timer;
+    private float timer = 1;
+    private float waitTime = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -19,14 +20,15 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer <= Time.time)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
+        if (timer < waitTime)
+        { }
+        else if (Input.GetKeyDown(KeyCode.Space))
             {
                 ourRigidBody.AddExplosionForce(400, transform.position + Vector3.down, 2);
-                timer =+ 2;
+                timer = 0;
             }
-        }
+        timer += Time.deltaTime;
+        
         //        if (Input.GetKey(KeyCode.LeftControl))
         //    transform.position -= transform.up * Time.deltaTime;
 

@@ -27,6 +27,10 @@ public class Health : MonoBehaviour
     {
         CHP -= damage;
         print("Ouch you hurt me my health is now" + CHP);
+        if(CHP <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     internal int whatsYourMaxHealth()
