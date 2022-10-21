@@ -5,7 +5,7 @@ using UnityEngine;
 public class ApplyForces : MonoBehaviour
 {
     Rigidbody ourRigidBody;
-
+    public GameObject DestructionObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,21 +21,32 @@ public class ApplyForces : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-     Health objectHitHealth  = collision.gameObject.GetComponent<Health>();
-
-        if(objectHitHealth)
+        SnowballReact objectHitDetected = collision.gameObject.GetComponent<SnowballReact>();
+        if(objectHitDetected)
         {
-            print("Found Health script in object hit");
-            objectHitHealth.takeDamage(3);
 
-            int ObjectsMaximumHealth = objectHitHealth.whatsYourMaxHealth();
-            if (ObjectsMaximumHealth > 100)
-                objectHitHealth.takeDamage(100);
+            Destroy(DestructionObject);
+            Health objectHitHealth  = collision.gameObject.GetComponent<Health>();
 
+                if(objectHitHealth)
+              {
+                   print("Found Health script in object hit");
+                   objectHitHealth.takeDamage(3);
+
+                  int ObjectsMaximumHealth = objectHitHealth.whatsYourMaxHealth();
+                   if (ObjectsMaximumHealth > 100)
+                       objectHitHealth.takeDamage(100);
+
+             }
+              else
+             {
+                 print("Didn't find Heath script in object hit");
+              }
         }
         else
         {
-            print("Didn't find Heath script in object hit");
+ 
         }
+  
     }
 }
