@@ -7,27 +7,30 @@ public class PlayerControl : MonoBehaviour
     private float turningSpeed = 180;
     Rigidbody ourRigidBody;
     public Transform SnowballTemplate;
-    private float timer = 1;
-    private float waitTime = 1;
+    private float timerJump = 1;
+    private float waitTimeJump = 1;
+    private double timerThrow = 0.25;
+    private double waitTimeThrow = 0.25;
 
     // Start is called before the first frame update
     void Start()
     {
         ourRigidBody = GetComponent<Rigidbody>();
-        timer = Time.time;
+        timerJump = Time.time;
+        timerThrow = Time.time;
 }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer < waitTime)
+        if (timerJump < waitTimeJump)
         { }
         else if (Input.GetKeyDown(KeyCode.Space))
             {
                 ourRigidBody.AddExplosionForce(400, transform.position + Vector3.down, 2);
-                timer = 0;
+                timerJump = 0;
             }
-        timer += Time.deltaTime;
+        timerJump += Time.deltaTime;
         
         //        if (Input.GetKey(KeyCode.LeftControl))
         //    transform.position -= transform.up * Time.deltaTime;
@@ -56,12 +59,16 @@ public class PlayerControl : MonoBehaviour
         // if (Input.GetKey(KeyCode.X))
         //  transform.Rotate(Vector3.right, -turningSpeed* Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (timerThrow < waitTimeThrow)
+        { }
+        else if (Input.GetKeyDown(KeyCode.J))
         {
-            Transform SB = Instantiate(SnowballTemplate, transform.position + transform.forward + transform.up, transform.rotation);
+            Transform SB = Instantiate(SnowballTemplate, transform.position + transform.forward + 2*transform.up, transform.rotation);
             Rigidbody projectileSB = SB.GetComponent<Rigidbody>();
             projectileSB.useGravity = true;
-            projectileSB.AddExplosionForce(1000, SB.transform.position - SB.transform.up - SB.transform.forward, 3);
+            projectileSB.AddExplosionForce(2000, SB.transform.position - 2*SB.transform.forward, 3); // SB.transform.up -
+            timerThrow = 0;
         }
+        timerThrow += Time.deltaTime;
     }
 }

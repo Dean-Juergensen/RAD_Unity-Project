@@ -5,17 +5,20 @@ using UnityEngine;
 public class ApplyForces : MonoBehaviour
 {
     Rigidbody ourRigidBody;
-    public GameObject DestructionObject;
+    ParticleSystem particle;
+    public GameObject destructionObject;
+ 
     // Start is called before the first frame update
     void Start()
     {
+        particle = GetComponent<ParticleSystem>();
         ourRigidBody = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
 
     }
 
@@ -24,8 +27,10 @@ public class ApplyForces : MonoBehaviour
         SnowballReact objectHitDetected = collision.gameObject.GetComponent<SnowballReact>();
         if(objectHitDetected)
         {
-
-            Destroy(DestructionObject);
+            particle.Play();  
+            Destroy(destructionObject, particle.main.duration);
+ 
+           
             Health objectHitHealth  = collision.gameObject.GetComponent<Health>();
 
                 if(objectHitHealth)
@@ -50,3 +55,4 @@ public class ApplyForces : MonoBehaviour
   
     }
 }
+// particle code from https://learn.unity.com/tutorial/introduction-to-particle-systems#6025fdd9edbc2a112d4f0137
