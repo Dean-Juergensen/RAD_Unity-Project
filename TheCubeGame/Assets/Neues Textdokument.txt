@@ -1,0 +1,1 @@
+do an on collision stay to make the character jump without it being spammable :D

@@ -29,6 +29,7 @@ public class Health : MonoBehaviour
         print("Ouch you hurt me my health is now" + CHP);
         if(CHP <= 0)
         {
+            ScoreManager.instance.AddPoint();
             Destroy(gameObject);
         }
     }
