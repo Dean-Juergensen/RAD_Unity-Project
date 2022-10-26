@@ -36,7 +36,7 @@ public class ApplyForces : MonoBehaviour
                 if(objectHitHealth)
               {
                    print("Found Health script in object hit");
-                   objectHitHealth.takeDamage(3);
+                   objectHitHealth.takeDamage(10);
 
                   int ObjectsMaximumHealth = objectHitHealth.whatsYourMaxHealth();
                    if (ObjectsMaximumHealth > 100)
